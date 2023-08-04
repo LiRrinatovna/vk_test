@@ -45,9 +45,9 @@ const ComicsItem = props => (
 	</Panel>
 );
 
-ComicsItem.propTypes = {
+SeriesItem.propTypes = {
 	id: PropTypes.string.isRequired,
 	go: PropTypes.func.isRequired,
 };
 
-export default ComicsItem;
+export default SeriesItem;

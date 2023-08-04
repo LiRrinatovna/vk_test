@@ -6,6 +6,7 @@ import '@vkontakte/vkui/dist/vkui.css';
 import Home from './panels/Home';
 import ComicsItem from './panels/ComicsItem';
 import SeriesItem from './panels/SeriesItem';
+import Search from './panels/Search';
 
 
 const App = () => {
@@ -36,6 +37,7 @@ const App = () => {
 								<Home id='home' fetchedUser={fetchedUser} go={go} />
 								<ComicsItem id='ComicsItem' go={go} />
 								<SeriesItem id='SeriesItem' go={go} />
+								<Search id='Search' go={go} />
 							</View>
 						</SplitCol>
 					</SplitLayout>
