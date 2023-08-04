@@ -4,7 +4,9 @@ import { View, ScreenSpinner, AdaptivityProvider, AppRoot, ConfigProvider, Split
 import '@vkontakte/vkui/dist/vkui.css';
 
 import Home from './panels/Home';
-import Persik from './panels/Persik';
+import ComicsItem from './panels/ComicsItem';
+import SeriesItem from './panels/SeriesItem';
+
 
 const App = () => {
 	const [activePanel, setActivePanel] = useState('home');
@@ -32,7 +34,8 @@ const App = () => {
 						<SplitCol>
 							<View activePanel={activePanel}>
 								<Home id='home' fetchedUser={fetchedUser} go={go} />
-								<Persik id='persik' go={go} />
+								<ComicsItem id='ComicsItem' go={go} />
+								<SeriesItem id='SeriesItem' go={go} />
 							</View>
 						</SplitCol>
 					</SplitLayout>

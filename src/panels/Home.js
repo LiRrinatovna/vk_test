@@ -1,28 +1,166 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { Panel, PanelHeader, Header, Button, Group, Cell, Div, Avatar } from '@vkontakte/vkui';
+import { Panel, Header, Group, Search, Tabbar, TabbarItem, Counter, CardScroll, Card, Link, Image} from '@vkontakte/vkui';
+import {Icon24Filter, Icon28SearchOutline, Icon28BookSpreadOutline, Icon28ListBulletSquareOutline, Icon28UserStarBadgeOutline} from '@vkontakte/icons';
+
+import './custom.css';
 
 const Home = ({ id, go, fetchedUser }) => (
-	<Panel id={id}>
-		<PanelHeader>Example</PanelHeader>
-		{fetchedUser &&
-		<Group header={<Header mode="secondary">User Data Fetched with VK Bridge</Header>}>
-			<Cell
-				before={fetchedUser.photo_200 ? <Avatar src={fetchedUser.photo_200}/> : null}
-				subtitle={fetchedUser.city && fetchedUser.city.title ? fetchedUser.city.title : ''}
-			>
-				{`${fetchedUser.first_name} ${fetchedUser.last_name}`}
-			</Cell>
-		</Group>}
 
-		<Group header={<Header mode="secondary">Navigation Example</Header>}>
-			<Div>
-				<Button stretched size="l" mode="secondary" onClick={go} data-to="persik">
-					Show me the Persik, please
-				</Button>
-			</Div>
+	<Panel id={id}>
+		<Search value="" after={null} icon={<Icon24Filter />}/>
+		
+		<Header
+			mode="primary"
+			aside={
+			<Link data-idslide='1' data-id='tab_all'>
+				Показать все
+			</Link>
+			}
+		>
+			Комиксы
+		</Header>
+		<Group>
+			<CardScroll size="s">
+				<div className="card item">
+					<Image
+						size={200}
+						src="../img/check.png"
+					>
+					</Image>
+					<Link onClick={go} data-to="ComicsItem">
+						Название книги
+					</Link>
+				</div>
+				<div className="card item">
+					<Image
+						size={200}
+						src="../img/check.png"
+					>
+					</Image>
+					<Link onClick={go} data-to="ComicsItem">
+						Название книги
+					</Link>
+				</div>
+				<div className="card item">
+					<Image
+						size={200}
+						src="../img/check.png"
+					>
+					</Image>
+					<Link onClick={go} data-to="ComicsItem">
+						Название книги
+					</Link>
+				</div>
+				<div className="card item">
+					<Image
+						size={200}
+						src="../img/check.png"
+					>
+					</Image>
+					<Link onClick={go} data-to="ComicsItem">
+						Название книги
+					</Link>
+				</div>
+				<div className="card item">
+					<Image
+						size={200}
+						src="../img/check.png"
+					>
+					</Image>
+					<Link onClick={go} data-to="ComicsItem">
+						Название книги
+					</Link>
+				</div>
+			</CardScroll>	
 		</Group>
+
+		<Header
+			mode="primary"
+			aside={
+			<Link data-idslide='1' data-id='tab_all'>
+				Показать все
+			</Link>
+			}
+		>
+			Серии
+		</Header>
+		<Group>
+			<CardScroll size="s">
+			<div className="card series">
+				<Image
+					size={200}
+					src="../img/check.png"
+				>
+				</Image>
+				<Link onClick={go} data-to="SeriesItem">
+					Название серии
+				</Link>
+				<span>
+					5 книг
+				</span>
+			</div>
+			<div className="card series">
+				<Image
+					size={200}
+					src="../img/check.png"
+				>
+				</Image>
+				<Link onClick={go} data-to="SeriesItem">
+					Название серии
+				</Link>
+				<span>
+					5 книг
+				</span>
+			</div>
+			<div className="card series">
+				<Image
+					size={200}
+					src="../img/check.png"
+				>
+				</Image>
+				<Link onClick={go} data-to="SeriesItem">
+					Название серии
+				</Link>
+				<span>
+					5 книг
+				</span>
+			</div>
+			<div className="card series">
+				<Image
+					size={200}
+					src="../img/check.png"
+				>
+				</Image>
+				<Link onClick={go} data-to="SeriesItem">
+					Название серии
+				</Link>
+				<span>
+					5 книг
+				</span>
+			</div>
+			</CardScroll>	
+		</Group>
+
+		<Tabbar style={{ position: 'sticky'}}>
+			<TabbarItem text="Найти">
+				<Icon28SearchOutline/>
+			</TabbarItem >
+			<TabbarItem onClick={go} data-to="ComicsItem" text="Комиксы">
+				<Icon28BookSpreadOutline/>
+			</TabbarItem >
+			<TabbarItem onClick={go} data-to="SeriesItem" text="Серии">
+				<Icon28ListBulletSquareOutline/>
+			</TabbarItem >
+			<TabbarItem text="Моё" indicator={
+					<Counter size="s" mode="prominent">
+					n
+					</Counter>
+				}>
+				<Icon28UserStarBadgeOutline/>
+			</TabbarItem >
+		</Tabbar>
 	</Panel>
 );
 
