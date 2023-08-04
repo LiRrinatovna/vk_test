@@ -7,6 +7,7 @@ import Home from './panels/Home';
 import ComicsItem from './panels/ComicsItem';
 import SeriesItem from './panels/SeriesItem';
 import Search from './panels/Search';
+import Catalog from './panels/Catalog';
 
 
 const App = () => {
@@ -38,6 +39,7 @@ const App = () => {
 								<ComicsItem id='ComicsItem' go={go} />
 								<SeriesItem id='SeriesItem' go={go} />
 								<Search id='search' go={go} />
+								<Catalog id='Catalog' go={go} />
 							</View>
 						</SplitCol>
 					</SplitLayout>

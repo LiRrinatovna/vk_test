@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import {Icon24Filter} from '@vkontakte/icons';
-import {Panel, Search, Header, PanelHeaderBack, Group, PanelHeader, Image, Link} from '@vkontakte/vkui';
+import {Icon24Filter, Icon28SearchOutline, Icon28BookSpreadOutline, Icon28ListBulletSquareOutline, Icon28UserStarBadgeOutline} from '@vkontakte/icons';
+import {Panel, Search, Header, PanelHeaderBack, Group, PanelHeader, Image, Link, Tabbar, TabbarItem, Counter} from '@vkontakte/vkui';
 import './custom.css';
 
 function SearchRes(der){
@@ -60,15 +60,34 @@ function SearchRes(der){
     );
 }
 const search = props => (
-<Panel>
-    <PanelHeader
-        before={<PanelHeaderBack onClick={props.go} data-to="home"/>}
-    >
-        Название серии
-    </PanelHeader >
-    <Search value="" icon={<Icon24Filter />}/>
-    <SearchRes />	
-</Panel>
+    <Panel>
+        <PanelHeader
+            before={<PanelHeaderBack onClick={props.go} data-to="home"/>}
+        >
+            Название серии
+        </PanelHeader >
+        <Search value="" icon={<Icon24Filter />}/>
+        <SearchRes />
+
+        <Tabbar style={{ position: 'sticky'}}>
+            <TabbarItem text="Найти">
+                <Icon28SearchOutline/>
+            </TabbarItem >
+            <TabbarItem text="Комиксы">
+                <Icon28BookSpreadOutline/>
+            </TabbarItem >
+            <TabbarItem text="Серии">
+                <Icon28ListBulletSquareOutline/>
+            </TabbarItem >
+            <TabbarItem text="Моё" indicator={
+                    <Counter size="s" mode="prominent">
+                    n
+                    </Counter>
+                }>
+                <Icon28UserStarBadgeOutline/>
+            </TabbarItem >
+        </Tabbar>	
+    </Panel>
 );
 
 search.propTypes = {

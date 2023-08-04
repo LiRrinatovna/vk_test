@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { Panel, PanelHeader, PanelHeaderBack, Gallery, Group, Header,Title, Avatar, Link, Image, HorizontalCell} from '@vkontakte/vkui';
+import {Icon24Filter, Icon28SearchOutline, Icon28BookSpreadOutline, Icon28ListBulletSquareOutline, Icon28UserStarBadgeOutline} from '@vkontakte/icons';
+import { Panel, PanelHeader, PanelHeaderBack, Gallery, Group, Header,Title, Avatar, Link, Image, HorizontalCell, Tabbar, TabbarItem, Counter} from '@vkontakte/vkui';
 import './custom.css';
 const ComicsItem = props => (
 	<Panel id={props.id}>
@@ -54,7 +55,24 @@ const ComicsItem = props => (
 				5 книг
 			</span>
 		</div>
-		
+		<Tabbar style={{ position: 'sticky'}}>
+			<TabbarItem text="Найти">
+				<Icon28SearchOutline/>
+			</TabbarItem >
+			<TabbarItem text="Комиксы">
+				<Icon28BookSpreadOutline/>
+			</TabbarItem >
+			<TabbarItem text="Серии">
+				<Icon28ListBulletSquareOutline/>
+			</TabbarItem >
+			<TabbarItem text="Моё" indicator={
+					<Counter size="s" mode="prominent">
+					n
+					</Counter>
+				}>
+				<Icon28UserStarBadgeOutline/>
+			</TabbarItem >
+		</Tabbar>
 	</Panel>
 );
 
