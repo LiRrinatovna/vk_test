@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import { Panel, PanelHeader, PanelHeaderBack, Group, CardGrid, Card, Image} from '@vkontakte/vkui';
 import './custom.css';
-const ComicsItem = props => (
+const SeriesItem = props => (
 	<Panel id={props.id}>
 		<PanelHeader
 			before={<PanelHeaderBack onClick={props.go} data-to="home"/>}

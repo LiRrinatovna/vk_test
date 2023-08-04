@@ -37,7 +37,7 @@ const App = () => {
 								<Home id='home' fetchedUser={fetchedUser} go={go} />
 								<ComicsItem id='ComicsItem' go={go} />
 								<SeriesItem id='SeriesItem' go={go} />
-								<Search id='Search' go={go} />
+								<Search id='search' go={go} />
 							</View>
 						</SplitCol>
 					</SplitLayout>

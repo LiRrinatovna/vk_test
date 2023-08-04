@@ -9,7 +9,7 @@ import './custom.css';
 const Home = ({ id, go, fetchedUser }) => (
 
 	<Panel id={id}>
-		<Search onClick={go} data-to="Search" value="" after={null} icon={<Icon24Filter />}/>
+		<Search onClick={go} data-to="earch" value="" after={null} icon={<Icon24Filter />}/>
 		
 		<Header
 			mode="primary"
@@ -144,7 +144,7 @@ const Home = ({ id, go, fetchedUser }) => (
 		</Group>
 
 		<Tabbar style={{ position: 'sticky'}}>
-			<TabbarItem onClick={go} data-to="Search" text="Найти">
+			<TabbarItem onClick={go} data-to="search" text="Найти">
 				<Icon28SearchOutline/>
 			</TabbarItem >
 			<TabbarItem onClick={go} data-to="ComicsItem" text="Комиксы">
