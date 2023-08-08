@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { Panel, Header, Group, Search, Tabbar, TabbarItem, Counter, CardScroll, Card, Link, Image, Epic} from '@vkontakte/vkui';
+import { Panel, Header, Group, Search, Tabbar, TabbarItem, Counter, CardScroll, Card, Link, Image} from '@vkontakte/vkui';
 import {Icon24Filter, Icon28SearchOutline, Icon28BookSpreadOutline, Icon28ListBulletSquareOutline, Icon28UserStarBadgeOutline} from '@vkontakte/icons';
 
 import './custom.css';
@@ -10,7 +10,7 @@ const Home = ({ id, go, fetchedUser }) => (
 
 	<Panel id={id}>
 
-		<Search onClick={go} data-to="search" value="" after={null} icon={<Icon24Filter />}/>
+		<Search value="" after={null} icon={<Icon24Filter onClick={go} data-to="search"/>}/>
 		
 		<Header
 			mode="primary"
@@ -143,6 +143,8 @@ const Home = ({ id, go, fetchedUser }) => (
 			</div>
 			</CardScroll>	
 		</Group>
+
+		
 	</Panel>
 );
 
