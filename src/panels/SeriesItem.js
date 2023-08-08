@@ -43,24 +43,7 @@ const SeriesItem = props => (
 				<div style={{ paddingBottom: '100%' }} />
 			</Card>
 		</CardGrid>
-		<Tabbar style={{ position: 'sticky'}}>
-			<TabbarItem text="Найти">
-				<Icon28SearchOutline/>
-			</TabbarItem >
-			<TabbarItem text="Комиксы">
-				<Icon28BookSpreadOutline/>
-			</TabbarItem >
-			<TabbarItem text="Серии">
-				<Icon28ListBulletSquareOutline/>
-			</TabbarItem >
-			<TabbarItem text="Моё" indicator={
-					<Counter size="s" mode="prominent">
-					n
-					</Counter>
-				}>
-				<Icon28UserStarBadgeOutline/>
-			</TabbarItem >
-		</Tabbar>	
+		
 	</Panel>
 );
 

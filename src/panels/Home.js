@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { Panel, Header, Group, Search, Tabbar, TabbarItem, Counter, CardScroll, Card, Link, Image} from '@vkontakte/vkui';
+import { Panel, Header, Group, Search, Tabbar, TabbarItem, Counter, CardScroll, Card, Link, Image, Epic} from '@vkontakte/vkui';
 import {Icon24Filter, Icon28SearchOutline, Icon28BookSpreadOutline, Icon28ListBulletSquareOutline, Icon28UserStarBadgeOutline} from '@vkontakte/icons';
 
 import './custom.css';
@@ -143,25 +143,6 @@ const Home = ({ id, go, fetchedUser }) => (
 			</div>
 			</CardScroll>	
 		</Group>
-
-		<Tabbar style={{ position: 'sticky'}}>
-			<TabbarItem onClick={go} data-to="search" text="Найти">
-				<Icon28SearchOutline/>
-			</TabbarItem >
-			<TabbarItem onClick={go} data-to="Catalog" text="Комиксы">
-				<Icon28BookSpreadOutline/>
-			</TabbarItem >
-			<TabbarItem onClick={go} data-to="Catalog" text="Серии">
-				<Icon28ListBulletSquareOutline/>
-			</TabbarItem >
-			<TabbarItem text="Моё" indicator={
-					<Counter size="s" mode="prominent">
-					n
-					</Counter>
-				}>
-				<Icon28UserStarBadgeOutline/>
-			</TabbarItem >
-		</Tabbar>
 	</Panel>
 );
 
@@ -178,6 +159,4 @@ Home.propTypes = {
 	}),
 };
 
-
-  
 export default Home;
