@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import bridge from '@vkontakte/vk-bridge';
-import { View, ScreenSpinner, AdaptivityProvider, AppRoot, ConfigProvider, SplitLayout, SplitCol, Epic, Tabbar, TabbarItem, Counter, Panel, PanelHeader, Group, Cell, Badge, PanelHeaderBack, Placeholder } from '@vkontakte/vkui';
-import {Icon28SearchOutline, Icon28BookSpreadOutline, Icon28ListBulletSquareOutline, Icon28UserStarBadgeOutline} from '@vkontakte/icons';
+import { View, ScreenSpinner, AdaptivityProvider, AppRoot, ConfigProvider, SplitLayout, SplitCol, Epic, Tabbar, TabbarItem, Counter, Panel, Search } from '@vkontakte/vkui';
+import {Icon28SearchOutline, Icon28BookSpreadOutline, Icon28ListBulletSquareOutline, Icon28UserStarBadgeOutline, Icon24Filter} from '@vkontakte/icons';
 import '@vkontakte/vkui/dist/vkui.css';
 
 import Home from './panels/Home';
 import ComicsItem from './panels/ComicsItem';
 import SeriesItem from './panels/SeriesItem';
-import Search from './panels/Search';
+import SearchPg from './panels/Search';
 import Catalog from './panels/Catalog';
 
 
@@ -43,17 +43,12 @@ const App = () => {
 		<ConfigProvider>
 			<AdaptivityProvider>
 				<AppRoot>
-					<SplitLayout popout={popout}>
-						<SplitCol>
-							<View activePanel={activePanel}>
-								<Home id='home' fetchedUser={fetchedUser} go={go} />
-								<ComicsItem id='ComicsItem' go={go} />
-								<SeriesItem id='SeriesItem' go={go} />
-								<Search id='search' go={go} />
-								<Catalog id='Catalog' go={go} />
-							</View>
-						</SplitCol>
-					</SplitLayout>
+					<Search onClick={go} data-to="searchPg" value="" after={null} icon={<Icon24Filter/>}/>
+					{/* <Catalog id='Catalog' go={go} />
+					<SearchPg id='searchPg' go={go} />
+					<ComicsItem id='ComicsItem' go={go} />
+					<SeriesItem id='SeriesItem' go={go} />
+					<Home id='home' fetchedUser={fetchedUser} go={go} /> */}
 					<SplitLayout
 						style={{ justifyContent: 'center' }}
 					>			
@@ -64,8 +59,9 @@ const App = () => {
 							(
 								<Tabbar>
 								<TabbarItem
-									onClick={go}
-									data-to="search"
+									onClick={onStoryChange}
+									selected={activeStory === 'search'}
+									data-story="search"
 									text="Найти"
 								>
 									<Icon28SearchOutline />
@@ -103,39 +99,25 @@ const App = () => {
 							)
 							}
 						>
-							<View id="feed" activePanel="feed">
-							<Panel id="feed">
-								<PanelHeader before={<PanelHeaderBack />}>Найти</PanelHeader>
-								<Group style={{ height: '1000px' }}>
-								<Placeholder icon={<Icon28SearchOutline width={56} height={56} />} />
-								</Group>
-							</Panel>
+							<View id="search" activePanel="search">
+								<Panel id="search">
+									<SearchPg id='searchPg' go={go} />
+								</Panel>
 							</View>
 							<View id="services" activePanel="services">
-							<Panel id="services">
-								<PanelHeader before={<PanelHeaderBack />}>Комиксы</PanelHeader>
-								<Group style={{ height: '1000px' }}>
-								<Placeholder icon={<Icon28BookSpreadOutline width={56} height={56} />}></Placeholder>
-								</Group>
-							</Panel>
+								<Panel id="services">
+									<Catalog id='Catalog' go={go} />
+								</Panel>
 							</View>
 							<View id="clips" activePanel="clips">
-							<Panel id="clips">
-								<PanelHeader before={<PanelHeaderBack />}>Серии</PanelHeader>
-								<Group style={{ height: '1000px' }}>
-								<Placeholder icon={<Icon28ListBulletSquareOutline width={56} height={56} />}></Placeholder>
-								</Group>
-							</Panel>
+								<Panel id="clips">
+									<Catalog id='Catalog' go={go} />
+								</Panel>
 							</View>
 							<View id="messages" activePanel="messages">
-							<Panel id="messages">
-								<PanelHeader before={<PanelHeaderBack />}>Моё</PanelHeader>
-								<Group style={{ height: '1000px' }}>
-								<Placeholder
-									icon={<Icon28UserStarBadgeOutline width={56} height={56} />}
-								></Placeholder>
-								</Group>
-							</Panel>
+								<Panel id="messages">
+									<Home id='home' fetchedUser={fetchedUser} go={go} />
+								</Panel>
 							</View>
 						</Epic>
 						</SplitCol>

@@ -6,7 +6,7 @@ import {Panel, Search, Header, PanelHeaderBack, Group, PanelHeader, Tabbar, Tabb
 import './custom.css';
 
 function Content(der){
-    der = 1
+    // der = 1
     if(!der){
         return <p slideWidth="30%">Книги</p>
     }

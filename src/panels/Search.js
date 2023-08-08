@@ -60,16 +60,9 @@ function SearchRes(der){
     );
 }
 const search = props => (
-    <Panel>
-        <PanelHeader
-            before={<PanelHeaderBack onClick={props.go} data-to="home"/>}
-        >
-            Название серии
-        </PanelHeader >
-        <Search value="" icon={<Icon24Filter />}/>
+  
         <SearchRes />
-        
-    </Panel>
+
 );
 
 search.propTypes = {

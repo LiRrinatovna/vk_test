@@ -10,7 +10,7 @@ const Home = ({ id, go, fetchedUser }) => (
 
 	<Panel id={id}>
 
-		<Search value="" after={null} icon={<Icon24Filter onClick={go} data-to="search"/>}/>
+		
 		
 		<Header
 			mode="primary"
