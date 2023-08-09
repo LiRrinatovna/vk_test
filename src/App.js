@@ -105,12 +105,12 @@ const App = () => {
 							</View>
 							<View id="services" activePanel="services">
 								<Panel id="services">
-									<Catalog id='ComicsItem' go={go} />
+									<ComicsItem id='ComicsItem' go={go} />
 								</Panel>
 							</View>
 							<View id="clips" activePanel="clips">
 								<Panel id="clips">
-									<Catalog id='SeriesItem' go={go} />
+									<SeriesItem id='SeriesItem' go={go} />
 								</Panel>
 							</View>
 							<View id="messages" activePanel="messages">
