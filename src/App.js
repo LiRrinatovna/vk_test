@@ -44,8 +44,8 @@ const App = () => {
 			<AdaptivityProvider>
 				<AppRoot>
 					<Search onClick={go} data-to="searchPg" value="" after={null} icon={<Icon24Filter/>}/>
-					{/* <Catalog id='Catalog' go={go} />
-					<SearchPg id='searchPg' go={go} />
+					 <Catalog id='Catalog' go={go} />
+					{/*<SearchPg id='searchPg' go={go} />
 					<ComicsItem id='ComicsItem' go={go} />
 					<SeriesItem id='SeriesItem' go={go} />
 					<Home id='home' fetchedUser={fetchedUser} go={go} /> */}

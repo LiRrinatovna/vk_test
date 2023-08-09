@@ -6,20 +6,19 @@ import {Panel, Search, Header, PanelHeaderBack, Group, PanelHeader, Tabbar, Tabb
 import './custom.css';
 
 function Content(der){
-    // der = 1
-    if(!der){
-        return <p slideWidth="30%">Книги</p>
+    der = 0
+    if(der = 0){
+        return <p slideWidth="30%">Серии</p>
     }
-    return<p slideWidth="30%">Серии</p>
+    if(der = 1){
+        return<p slideWidth="30%">Книги</p>
+    }
+    
 }
 const Catalog = props => (
-<Panel>
-    <PanelHeader
-        before={<PanelHeaderBack onClick={props.go} data-to="home"/>}
-    >
+
         <Content />
-    </PanelHeader >
-</Panel>
+
 );
 
 Catalog.propTypes = {
