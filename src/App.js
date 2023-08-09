@@ -12,7 +12,7 @@ import Catalog from './panels/Catalog';
 
 
 const App = () => {
-	const [activePanel, setActivePanel] = useState('home');
+	const [activePanel, setActivePanel] = useState('Home');
 	const [fetchedUser, setUser] = useState(null);
 	const [popout, setPopout] = useState(<ScreenSpinner size='large' />);
 
@@ -75,6 +75,14 @@ const App = () => {
 								</TabbarItem>
 								<TabbarItem
 									onClick={onStoryChange}
+									selected={activeStory === 'my'}
+									data-story="my"
+									text="Главная"
+								>
+									<Icon28BookSpreadOutline />
+								</TabbarItem>
+								<TabbarItem
+									onClick={onStoryChange}
 									selected={activeStory === 'clips'}
 									data-story="clips"
 									text="Серии"
@@ -108,14 +116,19 @@ const App = () => {
 									<ComicsItem id='ComicsItem' go={go} />
 								</Panel>
 							</View>
+							<View id="messages" activePanel="messages">
+								<Panel id="messages">
+									<Home id='home' go={go} />
+								</Panel>
+							</View>
 							<View id="clips" activePanel="clips">
 								<Panel id="clips">
 									<SeriesItem id='SeriesItem' go={go} />
 								</Panel>
 							</View>
-							<View id="messages" activePanel="messages">
-								<Panel id="messages">
-									<Home id='home' fetchedUser={fetchedUser} go={go} />
+							<View id="my" activePanel="my">
+								<Panel id="my">
+									<Home id='home' go={go} />
 								</Panel>
 							</View>
 						</Epic>
