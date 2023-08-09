@@ -8,10 +8,7 @@ import './custom.css';
 
 const Home = ({ id, go, fetchedUser }) => (
 
-	<Panel id={id}>
-
-		
-		
+	<div>
 		<Header
 			mode="primary"
 			aside={
@@ -142,10 +139,9 @@ const Home = ({ id, go, fetchedUser }) => (
 				</span>
 			</div>
 			</CardScroll>	
-		</Group>
-
-		
-	</Panel>
+		</Group>		
+	</div>
+	
 );
 
 Home.propTypes = {
