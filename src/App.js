@@ -12,8 +12,9 @@ import Catalog from './panels/Catalog';
 
 
 const App = () => {
-	const [activePanel, setActivePanel] = useState('Home');
-	const [fetchedUser, setUser] = useState(null);
+
+
+	const [activePanel, setActivePanel] = useState(<Home id='Home' go={go} />);
 	const [popout, setPopout] = useState(<ScreenSpinner size='large' />);
 
 	
@@ -36,14 +37,14 @@ const App = () => {
 	}, []);
 
 	const go = e => {
-		setActivePanel(e.currentTarget.dataset.to);
+		setActiveStory('services');
 	};
 
 	return (
 		<ConfigProvider>
 			<AdaptivityProvider>
 				<AppRoot>
-					<Search onClick={go} data-to="searchPg" value="" after={null} icon={<Icon24Filter/>}/>
+					<Search onClick={go} data-to="я" value="" after={null} icon={<Icon24Filter/>}/>
 					{/*<SearchPg id='searchPg' go={go} />
 					<ComicsItem id='ComicsItem' go={go} />
 					<SeriesItem id='SeriesItem' go={go} />
@@ -61,6 +62,7 @@ const App = () => {
 									onClick={onStoryChange}
 									selected={activeStory === 'search'}
 									data-story="search"
+									
 									text="Найти"
 								>
 									<Icon28SearchOutline />
@@ -113,7 +115,7 @@ const App = () => {
 							</View>
 							<View id="services" activePanel="services">
 								<Panel id="services">
-									<ComicsItem id='ComicsItem' go={go} />
+									<Catalog id='Catalog' go={go} />
 								</Panel>
 							</View>
 							<View id="messages" activePanel="messages">
@@ -123,7 +125,7 @@ const App = () => {
 							</View>
 							<View id="clips" activePanel="clips">
 								<Panel id="clips">
-									<SeriesItem id='SeriesItem' go={go} />
+									<Catalog id='Catalog' go={go} />
 								</Panel>
 							</View>
 							<View id="my" activePanel="my">
@@ -137,8 +139,6 @@ const App = () => {
 				</AppRoot>
 			</AdaptivityProvider>
 		</ConfigProvider>
-		
-	
 	);
 }
 

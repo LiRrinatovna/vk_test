@@ -6,9 +6,9 @@ import {Icon24Filter, Icon28SearchOutline, Icon28BookSpreadOutline, Icon28ListBu
 
 import './custom.css';
 
-const Home = ({ id, go, fetchedUser }) => (
+const Home = ({ id, go }) => (
 
-	<div>
+	<Panel id={id}>
 		<Header
 			mode="primary"
 			aside={
@@ -139,9 +139,10 @@ const Home = ({ id, go, fetchedUser }) => (
 				</span>
 			</div>
 			</CardScroll>	
-		</Group>		
-	</div>
-	
+		</Group>
+
+		
+	</Panel>
 );
 
 Home.propTypes = {

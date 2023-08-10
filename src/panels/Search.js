@@ -56,7 +56,9 @@ function SearchRes(dqr){
                         5 книг
                     </span>
                 </div>
+            
             </Group>
+            
                
         );
     }

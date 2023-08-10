@@ -8,70 +8,10 @@ import './custom.css';
 function Content(der) {
     der = 0
     if (der = 0) {
-        return (
-            <Group>
-                <Header slideWidth="30%">Книги</Header>
-                <div className="card series">
-                    <Image
-                        size={200}
-                        src="../img/check.png"
-                    >
-                    </Image>
-                    <Link onClick={go} data-to="SeriesItem">
-                        Название книги
-                    </Link>
-                    <span>
-                        Серия
-                    </span>
-                </div>
-                <div className="card series">
-                    <Image
-                        size={200}
-                        src="../img/check.png"
-                    >
-                    </Image>
-                    <Link onClick={go} data-to="SeriesItem">
-                        Название книги
-                    </Link>
-                    <span>
-                        Серия
-                    </span>
-                </div>
-            </Group>
-            );
+        return <Header slideWidth="30%">Серии</Header>
     }
     if (der = 1) {
-        return (
-                <Group>
-                    <Header slideWidth="30%">Серии</Header>
-                    <div className="card series">
-                        <Image
-                            size={200}
-                            src="../img/check.png"
-                        >
-                        </Image>
-                        <Link onClick={go} data-to="SeriesItem">
-                            Название серии
-                        </Link>
-                        <span>
-                            5 книг
-                        </span>
-                    </div>
-                    <div className="card series">
-                        <Image
-                            size={200}
-                            src="../img/check.png"
-                        >
-                        </Image>
-                        <Link onClick={go} data-to="SeriesItem">
-                            Название серии
-                        </Link>
-                        <span>
-                            5 книг
-                        </span>
-                    </div>
-                </Group>
-                );
+        return <Header slideWidth="30%">Книги</Header>
     }
 
 }
