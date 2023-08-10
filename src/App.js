@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import bridge from '@vkontakte/vk-bridge';
-import { View, ScreenSpinner, AdaptivityProvider, AppRoot, ConfigProvider, SplitLayout, SplitCol, Epic, Tabbar, TabbarItem, Counter, Panel, Search } from '@vkontakte/vkui';
+import {ScreenSpinner, AdaptivityProvider, AppRoot, ConfigProvider, SplitLayout, SplitCol, Epic, Tabbar, TabbarItem, Counter, Panel, Search } from '@vkontakte/vkui';
 import {Icon28SearchOutline, Icon28BookSpreadOutline, Icon28ListBulletSquareOutline, Icon28UserStarBadgeOutline, Icon24Filter} from '@vkontakte/icons';
 import '@vkontakte/vkui/dist/vkui.css';
 
@@ -13,21 +13,24 @@ import Catalog from './panels/Catalog';
 
 const App = () => {
 
-
-	const [activePanel, setActivePanel] = useState(<Home id='Home' go={go} />);
-	const [popout, setPopout] = useState(<ScreenSpinner size='large' />);
-
-	
-	const [activeStory, setActiveStory] = React.useState('profile');
-	const activeStoryStyles = {
-	  backgroundColor: 'var(--vkui--color_background_secondary)',
-	  borderRadius: 8,
-	};
+	// const [popout, setPopout] = useState(<ScreenSpinner size='large' />);
+	const [activeStory, setActiveStory] = React.useState('home');
+	// const activeStoryStyles = {
+	//   backgroundColor: 'var(--vkui--color_background_secondary)',
+	//   borderRadius: 8,
+	// };
 	const onStoryChange = (e) => setActiveStory(e.currentTarget.dataset.story);
 
   
 
 	useEffect(() => {
+		bridge.subscribe(({detail: {type, data}}) =>{
+			if( type == 'VKWebAppUpdateConfig'){
+				const schemeAttriute = document.createAttribute('scheme');
+				schemeAttriute.value = data.scheme ? data.scheme : 'client_light';
+				document.body.attributes.setNamedItem(schemeAttriute); 
+			}
+		})
 		async function fetchData() {
 			const user = await bridge.send('VKWebAppGetUserInfo');
 			setUser(user);
@@ -36,8 +39,9 @@ const App = () => {
 		fetchData();
 	}, []);
 
-	const go = e => {
-		setActiveStory('services');
+	const go = ({id}) => {
+		console.log(id)
+		setActiveStory(id);
 	};
 
 	return (
@@ -69,32 +73,32 @@ const App = () => {
 								</TabbarItem>
 								<TabbarItem
 									onClick={onStoryChange}
-									selected={activeStory === 'services'}
-									data-story="services"
+									selected={activeStory === 'comics'}
+									data-story="comics"
 									text="Комиксы"
 								>
 									<Icon28BookSpreadOutline />
 								</TabbarItem>
 								<TabbarItem
 									onClick={onStoryChange}
-									selected={activeStory === 'my'}
-									data-story="my"
+									selected={activeStory === 'home'}
+									data-story="home"
 									text="Главная"
 								>
 									<Icon28BookSpreadOutline />
 								</TabbarItem>
 								<TabbarItem
 									onClick={onStoryChange}
-									selected={activeStory === 'clips'}
-									data-story="clips"
+									selected={activeStory === 'series'}
+									data-story="series"
 									text="Серии"
 								>
 									<Icon28ListBulletSquareOutline />
 								</TabbarItem>
 								<TabbarItem
 									onClick={onStoryChange}
-									selected={activeStory === 'messages'}
-									data-story="messages"
+									selected={activeStory === 'fav'}
+									data-story="fav"
 									indicator={
 									<Counter size="s" mode="prominent">
 										n
@@ -108,31 +112,35 @@ const App = () => {
 							)
 							}
 						>
-							<View id="search" activePanel="search">
-								<Panel id="search">
-									<SearchPg id='searchPg' go={go} />
-								</Panel>
-							</View>
-							<View id="services" activePanel="services">
-								<Panel id="services">
-									<Catalog id='Catalog' go={go} />
-								</Panel>
-							</View>
-							<View id="messages" activePanel="messages">
-								<Panel id="messages">
-									<Home id='home' go={go} />
-								</Panel>
-							</View>
-							<View id="clips" activePanel="clips">
-								<Panel id="clips">
-									<Catalog id='Catalog' go={go} />
-								</Panel>
-							</View>
-							<View id="my" activePanel="my">
-								<Panel id="my">
-									<Home id='home' go={go} />
-								</Panel>
-							</View>
+							
+						<Panel id="search">
+							<SearchPg id='searchPg' go={go} />
+						</Panel>
+					
+						<Panel id="comics">
+							<Catalog id='Catalog' go={go} />
+						</Panel>
+					
+						<Panel id="home">
+							<Home id='home' go={go} />
+						</Panel>
+					
+						<Panel id="series">
+							<Catalog id='Catalog' go={go} />
+						</Panel>
+			
+						<Panel id="fav">
+							<Home id='home' go={go} />
+						</Panel>
+
+						<Panel id="comicsItm">
+							<ComicsItem id='comicsItem' go={go} />
+						</Panel>
+						
+						<Panel id="seriesItm">
+							<SeriesItem id='seriesItem' go={go} />
+						</Panel>
+					
 						</Epic>
 						</SplitCol>
 					</SplitLayout>

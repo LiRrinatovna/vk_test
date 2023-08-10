@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import { Panel, Header, Group, Search, Tabbar, TabbarItem, Counter, CardScroll, Card, Link, Image} from '@vkontakte/vkui';
-import {Icon24Filter, Icon28SearchOutline, Icon28BookSpreadOutline, Icon28ListBulletSquareOutline, Icon28UserStarBadgeOutline} from '@vkontakte/icons';
 
 import './custom.css';
 
@@ -12,7 +11,7 @@ const Home = ({ id, go }) => (
 		<Header
 			mode="primary"
 			aside={
-			<Link data-idslide='1' data-id='tab_all'>
+			<Link onClick={go} data-to="Catalog">
 				Показать все
 			</Link>
 			}
@@ -27,47 +26,7 @@ const Home = ({ id, go }) => (
 						src="../img/check.png"
 					>
 					</Image>
-					<Link onClick={go} data-to="ComicsItem">
-						Название книги
-					</Link>
-				</div>
-				<div className="card item">
-					<Image
-						size={200}
-						src="../img/check.png"
-					>
-					</Image>
-					<Link onClick={go} data-to="ComicsItem">
-						Название книги
-					</Link>
-				</div>
-				<div className="card item">
-					<Image
-						size={200}
-						src="../img/check.png"
-					>
-					</Image>
-					<Link onClick={go} data-to="ComicsItem">
-						Название книги
-					</Link>
-				</div>
-				<div className="card item">
-					<Image
-						size={200}
-						src="../img/check.png"
-					>
-					</Image>
-					<Link onClick={go} data-to="ComicsItem">
-						Название книги
-					</Link>
-				</div>
-				<div className="card item">
-					<Image
-						size={200}
-						src="../img/check.png"
-					>
-					</Image>
-					<Link onClick={go} data-to="ComicsItem">
+					<Link onClick={() => go({id: "ComicsItem"})} data-to="ComicsItem">
 						Название книги
 					</Link>
 				</div>
@@ -77,7 +36,7 @@ const Home = ({ id, go }) => (
 		<Header
 			mode="primary"
 			aside={
-			<Link data-idslide='1' data-id='tab_all'>
+			<Link onClick={go => "Catalog" }>
 				Показать все
 			</Link>
 			}
@@ -92,46 +51,7 @@ const Home = ({ id, go }) => (
 					src="../img/check.png"
 				>
 				</Image>
-				<Link onClick={go} data-to="SeriesItem">
-					Название серии
-				</Link>
-				<span>
-					5 книг
-				</span>
-			</div>
-			<div className="card series">
-				<Image
-					size={200}
-					src="../img/check.png"
-				>
-				</Image>
-				<Link onClick={go} data-to="SeriesItem">
-					Название серии
-				</Link>
-				<span>
-					5 книг
-				</span>
-			</div>
-			<div className="card series">
-				<Image
-					size={200}
-					src="../img/check.png"
-				>
-				</Image>
-				<Link onClick={go} data-to="SeriesItem">
-					Название серии
-				</Link>
-				<span>
-					5 книг
-				</span>
-			</div>
-			<div className="card series">
-				<Image
-					size={200}
-					src="../img/check.png"
-				>
-				</Image>
-				<Link onClick={go} data-to="SeriesItem">
+				<Link onClick={() => go({id: "SeriesItem"})} data-to="SeriesItem">
 					Название серии
 				</Link>
 				<span>
