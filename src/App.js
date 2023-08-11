@@ -13,7 +13,7 @@ import Catalog from './panels/Catalog';
 
 const App = () => {
 
-	// const [popout, setPopout] = useState(<ScreenSpinner size='large' />);
+	const [popout, setPopout] = useState(<ScreenSpinner size='large' />);
 	const [activeStory, setActiveStory] = React.useState('home');
 	// const activeStoryStyles = {
 	//   backgroundColor: 'var(--vkui--color_background_secondary)',
@@ -25,7 +25,7 @@ const App = () => {
 
 	useEffect(() => {
 		bridge.subscribe(({detail: {type, data}}) =>{
-			if( type == 'VKWebAppUpdateConfig'){
+			if( type === 'VKWebAppUpdateConfig'){
 				const schemeAttriute = document.createAttribute('scheme');
 				schemeAttriute.value = data.scheme ? data.scheme : 'client_light';
 				document.body.attributes.setNamedItem(schemeAttriute); 
@@ -49,10 +49,6 @@ const App = () => {
 			<AdaptivityProvider>
 				<AppRoot>
 					<Search onClick={go} data-to="я" value="" after={null} icon={<Icon24Filter/>}/>
-					{/*<SearchPg id='searchPg' go={go} />
-					<ComicsItem id='ComicsItem' go={go} />
-					<SeriesItem id='SeriesItem' go={go} />
-					<Home id='home' fetchedUser={fetchedUser} go={go} /> */}
 					<SplitLayout
 						style={{ justifyContent: 'center' }}
 					>			
@@ -85,7 +81,7 @@ const App = () => {
 									data-story="home"
 									text="Главная"
 								>
-									<Icon28BookSpreadOutline />
+									<Icon28UserStarBadgeOutline />
 								</TabbarItem>
 								<TabbarItem
 									onClick={onStoryChange}
@@ -118,26 +114,26 @@ const App = () => {
 						</Panel>
 					
 						<Panel id="comics">
-							<Catalog id='Catalog' go={go} />
+							<Catalog tab="comics" id='catalog' go={go} />
 						</Panel>
 					
 						<Panel id="home">
-							<Home id='home' go={go} />
+							<Home tab="home" id='home' go={go} />
 						</Panel>
 					
 						<Panel id="series">
-							<Catalog id='Catalog' go={go} />
+							<Catalog tab="series" id='catalog' go={go} />
 						</Panel>
 			
 						<Panel id="fav">
-							<Home id='home' go={go} />
+							<Home tab="fav" id='home' go={go} />
 						</Panel>
 
-						<Panel id="comicsItm">
+						<Panel id="comicsItem">
 							<ComicsItem id='comicsItem' go={go} />
 						</Panel>
 						
-						<Panel id="seriesItm">
+						<Panel id="seriesItem">
 							<SeriesItem id='seriesItem' go={go} />
 						</Panel>
 					

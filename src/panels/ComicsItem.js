@@ -1,13 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import {Icon24Filter, Icon28SearchOutline, Icon28BookSpreadOutline, Icon28ListBulletSquareOutline, Icon28UserStarBadgeOutline} from '@vkontakte/icons';
-import { Panel, PanelHeader, PanelHeaderBack, Gallery, Group, Header,Title, Avatar, Link, Image, HorizontalCell, Tabbar, TabbarItem, Counter} from '@vkontakte/vkui';
+import { Panel, PanelHeader, PanelHeaderBack, Gallery, Group, Header,Title, Avatar, Link, Image, HorizontalCell} from '@vkontakte/vkui';
 import './custom.css';
 const ComicsItem = props => (
 	<Panel id={props.id}>
 		<PanelHeader
-			before={<PanelHeaderBack onClick={props.go} data-to="home"/>}
+			before={<PanelHeaderBack onClick={() => props.go({id: "fav"})}/>}
 		>
 			Название книги
 		</PanelHeader >
@@ -48,7 +47,7 @@ const ComicsItem = props => (
 				src="../img/check.png"
 			>
 			</Image>
-			<Link>
+			<Link onClick={() => props.go({id: "SeriesItem"})}>
 				Название серии
 			</Link>
 			<span>
@@ -60,8 +59,8 @@ const ComicsItem = props => (
 );
 
 ComicsItem.propTypes = {
-id: PropTypes.string.isRequired,
-go: PropTypes.func.isRequired
+	id: PropTypes.string.isRequired,
+	go: PropTypes.func.isRequired
 }
 
 export default ComicsItem;

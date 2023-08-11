@@ -4,9 +4,8 @@ import PropTypes from 'prop-types';
 import { Header, Group, Link, Image } from '@vkontakte/vkui';
 import './custom.css';
 
-function Content(der) {
-    der = 0
-    if (der = 0) {
+function Content(tab) {
+    if (tab == "comics") {
         return  <Group>
                     <Header slideWidth="30%">Комиксы</Header>
                     <div className="card series">
@@ -15,7 +14,7 @@ function Content(der) {
                             src="../img/check.png"
                         >
                         </Image>
-                        <Link>
+                        <Link onClick={() => go({id: "comicsItem"})} data-to="comicsItem">
                             Название книги
                         </Link>
                         <span>
@@ -24,7 +23,7 @@ function Content(der) {
                     </div>
                 </Group> 
     }
-    if (der = 1) {
+    if (tab == "series") {
         return  <Group>
                     <Header slideWidth="30%">Серии</Header>
                     <div className="card series">
@@ -33,7 +32,7 @@ function Content(der) {
                             src="../img/check.png"
                         >
                         </Image>
-                        <Link>
+                        <Link onClick={() => go({id: "seriesItem"})} data-to="seriesItem">
                             Название серии
                         </Link>
                         <span>
@@ -44,15 +43,17 @@ function Content(der) {
     }
 
 }
-const Catalog = props => (
 
-    <Content />
+const Catalog = (props) => (
+
+    <Content tab={props={tab}} />
 
 );
 
 Catalog.propTypes = {
     id: PropTypes.string.isRequired,
     go: PropTypes.func.isRequired,
+    tab: PropTypes.string.isRequired,
 };
 
 export default Catalog;

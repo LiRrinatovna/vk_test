@@ -1,17 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { Panel, Header, Group, Search, Tabbar, TabbarItem, Counter, CardScroll, Card, Link, Image} from '@vkontakte/vkui';
+import { Panel, Header, Group, CardScroll, Link, Image} from '@vkontakte/vkui';
 
 import './custom.css';
 
-const Home = ({ id, go }) => (
+const Home = ({ id, go, tab }) => (
 
 	<Panel id={id}>
 		<Header
 			mode="primary"
 			aside={
-			<Link onClick={go} data-to="Catalog">
+			<Link onClick={() => props.go({id: "comics"})} data-to="comics">
 				Показать все
 			</Link>
 			}
@@ -23,10 +23,10 @@ const Home = ({ id, go }) => (
 				<div className="card item">
 					<Image
 						size={200}
-						src="../img/check.png"
+						src="./img/check.png"
 					>
 					</Image>
-					<Link onClick={() => go({id: "ComicsItem"})} data-to="ComicsItem">
+					<Link onClick={() => go({id: "comicsItem"})} data-to="comicsItem">
 						Название книги
 					</Link>
 				</div>
@@ -36,7 +36,7 @@ const Home = ({ id, go }) => (
 		<Header
 			mode="primary"
 			aside={
-			<Link onClick={go => "Catalog" }>
+			<Link onClick={() => props.go({id: "comics"})} data-to="comics">
 				Показать все
 			</Link>
 			}
@@ -51,7 +51,7 @@ const Home = ({ id, go }) => (
 					src="../img/check.png"
 				>
 				</Image>
-				<Link onClick={() => go({id: "SeriesItem"})} data-to="SeriesItem">
+				<Link onClick={() => go({id: "seriesItem"})} data-to="seriesItem">
 					Название серии
 				</Link>
 				<span>
@@ -66,16 +66,10 @@ const Home = ({ id, go }) => (
 );
 
 Home.propTypes = {
-	id: PropTypes.string.isRequired,
-	go: PropTypes.func.isRequired,
-	fetchedUser: PropTypes.shape({
-		photo_200: PropTypes.string,
-		first_name: PropTypes.string,
-		last_name: PropTypes.string,
-		city: PropTypes.shape({
-			title: PropTypes.string,
-		}),
-	}),
+    id: PropTypes.string.isRequired,
+    go: PropTypes.func.isRequired,
+	tab: PropTypes.string.isRequired,
 };
+
 
 export default Home;
