@@ -7,7 +7,6 @@ import '@vkontakte/vkui/dist/vkui.css';
 import Home from './panels/Home';
 import ComicsItem from './panels/ComicsItem';
 import SeriesItem from './panels/SeriesItem';
-import SearchPg from './panels/Search';
 import Catalog from './panels/Catalog';
 
 
@@ -31,12 +30,12 @@ const App = () => {
 				document.body.attributes.setNamedItem(schemeAttriute); 
 			}
 		})
-		async function fetchData() {
-			const user = await bridge.send('VKWebAppGetUserInfo');
-			setUser(user);
-			setPopout(null);
-		}
-		fetchData();
+		// async function fetchData() {
+		// 	const user = await bridge.send('VKWebAppGetUserInfo');
+		// 	setUser(user);
+		// 	setPopout(null);
+		// }
+		// fetchData();
 	}, []);
 
 	const go = ({id}) => {
@@ -60,8 +59,8 @@ const App = () => {
 								<Tabbar>
 								<TabbarItem
 									onClick={onStoryChange}
-									selected={activeStory === 'search'}
-									data-story="search"
+									selected={activeStory === 'home'}
+									data-story="home"
 									
 									text="Найти"
 								>
@@ -74,14 +73,6 @@ const App = () => {
 									text="Комиксы"
 								>
 									<Icon28BookSpreadOutline />
-								</TabbarItem>
-								<TabbarItem
-									onClick={onStoryChange}
-									selected={activeStory === 'home'}
-									data-story="home"
-									text="Главная"
-								>
-									<Icon28UserStarBadgeOutline />
 								</TabbarItem>
 								<TabbarItem
 									onClick={onStoryChange}
@@ -109,16 +100,12 @@ const App = () => {
 							}
 						>
 							
-						<Panel id="search">
-							<SearchPg id='searchPg' go={go} />
+						<Panel id="home">
+							<Home tab="home" id='home' go={go} />
 						</Panel>
 					
 						<Panel id="comics">
 							<Catalog tab="comics" id='catalog' go={go} />
-						</Panel>
-					
-						<Panel id="home">
-							<Home tab="home" id='home' go={go} />
 						</Panel>
 					
 						<Panel id="series">
