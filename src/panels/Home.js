@@ -1,20 +1,20 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
-import { Panel, Header, Group, CardScroll, Link, Image} from '@vkontakte/vkui';
+import {Header, Group, CardScroll, Link, Image} from '@vkontakte/vkui';
 
 import './custom.css';
 
 function Content(props){
 	console.log(props)
-	if(props.props.tab == 'home'){
+  
+	if(props.history.name == 'Home'){
 	return(	
 		<>	
 			<Header
 				mode="primary"
 				aside={
-				<Link onClick={() =>  props.props.go({id: "comics"})} data-to="comics">
-					Показать все
+				<Link onClick={() => history.push('/comics')}>
+					Показать все HOME
 				</Link>
 				}
 			>
@@ -28,7 +28,7 @@ function Content(props){
 							src="./img/check.png"
 						>
 						</Image>
-						<Link onClick={() => props.props.go({id: "comicsItem", from: "home" })} data-to="comicsItem">
+						<Link onClick={() => history.push('/comics-item')}>
 							Название книги
 						</Link>
 					</div>
@@ -38,7 +38,7 @@ function Content(props){
 			<Header
 				mode="primary"
 				aside={
-				<Link onClick={() => props.props.go({id: "series"})} data-to="series">
+				<Link onClick={() => history.push('/series')}>
 					Показать все
 				</Link>
 				}
@@ -53,7 +53,7 @@ function Content(props){
 						src="./img/check.png"
 					>
 					</Image>
-					<Link onClick={() => props.props.go({id: "seriesItem", from: "home" })} data-to="seriesItem">
+					<Link onClick={() => history.push('/series-item')}>
 						Название серии
 					</Link>
 					<span>
@@ -65,75 +65,69 @@ function Content(props){
 		</>
 	)
 	}
-	if(props.props.tab == 'fav'){
+	if(props.history.name == 'fav'){
 		return(
-			<>
-				<Header
-					mode="primary"
-					aside={
-					<Link onClick={() => props.props.go({id: "series"})} data-to="series">
-						Показать все 
-					</Link>
-					}
-				>
-					Комиксы
-				</Header>
-				<Group>
-					<CardScroll size="s">
-						<div className="card item">
-							<Image
-								size={200}
-								src="./img/check.png"
-							>
-							</Image>
-							<Link onClick={() => props.props.go({id: "comicsItem", from: "fav" })} data-to="comicsItem">
-								Название книги
-							</Link>
-						</div>
-					</CardScroll>	
-				</Group>
-			
-				<Header
-					mode="primary"
-					aside={
-					<Link onClick={() => props.props.go({id: "comics"})} data-to="comics">
-						Показать все
-					</Link>
-					}
-				>
-					Серии
-				</Header>
-				<Group>
-					<CardScroll size="s">
-					<div className="card series">
-						<Image
-							size={200}
-							src="../img/check.png"
-						>
-						</Image>
-						<Link onClick={() => props.props.go({id: "seriesItem", from: "fav" })} data-to="seriesItem">
-							Название серии
-						</Link>
-						<span>
-							5 книг
-						</span>
-					</div>
-					</CardScroll>	
-				</Group>
-			</>
+			<>	
+        <Header
+          mode="primary"
+          aside={
+          <Link onClick={() => history.push('/comics')}>
+            Показать все
+          </Link>
+          }
+        >
+          Комиксы
+        </Header>
+        <Group>
+          <CardScroll size="s">
+            <div className="card item">
+              <Image
+                size={200}
+                src="./img/check.png"
+              >
+              </Image>
+              <Link onClick={() => history.push('/comics-item')}>
+                Название книги
+              </Link>
+            </div>
+          </CardScroll>	
+        </Group>
+
+        <Header
+          mode="primary"
+          aside={
+          <Link onClick={() => history.push('/series')}>
+            Показать все
+          </Link>
+          }
+        >
+          Серии
+        </Header>
+        <Group>
+          <CardScroll size="s">
+          <div className="card series">
+            <Image
+              size={200}
+              src="./img/check.png"
+            >
+            </Image>
+            <Link onClick={() => history.push('/series-item')}>
+              Название серии
+            </Link>
+            <span>
+              5 книг
+            </span>
+          </div>
+          </CardScroll>	
+        </Group>
+      </>
 		)
 	}
 }
 
 const Home = (props) => (
-	<Content props={props}/>
+	<Content history={props.history}/>
 );
-
-Home.propTypes = {
-    id: PropTypes.string.isRequired,
-    go: PropTypes.func.isRequired,
-	tab: PropTypes.string.isRequired,
-};
 
 
 export default Home;

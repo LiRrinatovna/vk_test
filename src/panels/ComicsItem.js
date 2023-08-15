@@ -5,18 +5,15 @@ import { Panel, PanelHeader, PanelHeaderBack, Gallery, Group, Header,Title, Avat
 
 import './custom.css';
 
-function Back(go){
-	console.log(go)
-	return "aaa"
-	// <PanelHeader
-	// 	before={<PanelHeaderBack onClick={() => props.go({id: "fav"})}/>}
-	// >
-		
-	// </PanelHeader >
+const goBack = () => {
+  props.history.goBack();
 }
+
 const ComicsItem = props => (
-	<>
-		<Back go={props.go.from} />
+	<>	<PanelHeader
+				before={<PanelHeaderBack onClick={() => goBack()}/>}
+			>
+		</PanelHeader >
 		<img src="https://placebear.com/320/320" style={{ display: 'block' }} />
 		<Group>
 			<p slideWidth="30%">
