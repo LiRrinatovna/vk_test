@@ -5,14 +5,15 @@ import { Panel, Header, Group, CardScroll, Link, Image} from '@vkontakte/vkui';
 
 import './custom.css';
 
-function Content(tab){
-	if(tab.tab == 'home'){
+function Content(props){
+	console.log(props)
+	if(props.props.tab == 'home'){
 	return(	
-
-<>			<Header
+		<>	
+			<Header
 				mode="primary"
 				aside={
-				<Link onClick={() => props.go({id: "comics"})} data-to="comics">
+				<Link onClick={() =>  props.props.go({id: "comics"})} data-to="comics">
 					Показать все
 				</Link>
 				}
@@ -27,7 +28,7 @@ function Content(tab){
 							src="./img/check.png"
 						>
 						</Image>
-						<Link onClick={() => go({id: "comicsItem"})} data-to="comicsItem">
+						<Link onClick={() => props.props.go({id: "comicsItem", from: "home" })} data-to="comicsItem">
 							Название книги
 						</Link>
 					</div>
@@ -37,7 +38,7 @@ function Content(tab){
 			<Header
 				mode="primary"
 				aside={
-				<Link onClick={() => props.go({id: "comics"})} data-to="comics">
+				<Link onClick={() => props.props.go({id: "series"})} data-to="series">
 					Показать все
 				</Link>
 				}
@@ -49,10 +50,10 @@ function Content(tab){
 				<div className="card series">
 					<Image
 						size={200}
-						src="../img/check.png"
+						src="./img/check.png"
 					>
 					</Image>
-					<Link onClick={() => go({id: "seriesItem"})} data-to="seriesItem">
+					<Link onClick={() => props.props.go({id: "seriesItem", from: "home" })} data-to="seriesItem">
 						Название серии
 					</Link>
 					<span>
@@ -61,18 +62,16 @@ function Content(tab){
 				</div>
 				</CardScroll>	
 			</Group>
-</>
-
+		</>
 	)
 	}
-	if(tab.tab == 'fav'){
+	if(props.props.tab == 'fav'){
 		return(
 			<>
-			
 				<Header
 					mode="primary"
 					aside={
-					<Link onClick={() => props.go({id: "comics"})} data-to="comics">
+					<Link onClick={() => props.props.go({id: "series"})} data-to="series">
 						Показать все 
 					</Link>
 					}
@@ -87,7 +86,7 @@ function Content(tab){
 								src="./img/check.png"
 							>
 							</Image>
-							<Link onClick={() => go({id: "comicsItem"})} data-to="comicsItem">
+							<Link onClick={() => props.props.go({id: "comicsItem", from: "fav" })} data-to="comicsItem">
 								Название книги
 							</Link>
 						</div>
@@ -97,7 +96,7 @@ function Content(tab){
 				<Header
 					mode="primary"
 					aside={
-					<Link onClick={() => props.go({id: "comics"})} data-to="comics">
+					<Link onClick={() => props.props.go({id: "comics"})} data-to="comics">
 						Показать все
 					</Link>
 					}
@@ -112,7 +111,7 @@ function Content(tab){
 							src="../img/check.png"
 						>
 						</Image>
-						<Link onClick={() => go({id: "seriesItem"})} data-to="seriesItem">
+						<Link onClick={() => props.props.go({id: "seriesItem", from: "fav" })} data-to="seriesItem">
 							Название серии
 						</Link>
 						<span>
@@ -127,7 +126,7 @@ function Content(tab){
 }
 
 const Home = (props) => (
-	<Content tab={props.tab} />
+	<Content props={props}/>
 );
 
 Home.propTypes = {

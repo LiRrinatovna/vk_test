@@ -38,10 +38,13 @@ const App = () => {
 		// fetchData();
 	}, []);
 
-	const go = ({id}) => {
-		console.log(id)
-		setActiveStory(id);
-	};
+	const go = ({id, from}) => {
+		if(from) {
+			setActiveStory(from)
+		} else {
+			setActiveStory(id) 
+		}
+	}
 
 	return (
 		<ConfigProvider>

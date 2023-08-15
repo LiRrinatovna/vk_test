@@ -1,10 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Panel, PanelHeader, PanelHeaderBack, Group, CardGrid, Card, Image, Link} from '@vkontakte/vkui';
+
 import './custom.css';
 
 const SeriesItem = props => (
-	<Panel id={props.id}>
+	<>
 		<PanelHeader
 			before={<PanelHeaderBack onClick={() => props.go({id: "fav"})}/>}
 		>
@@ -36,7 +37,7 @@ const SeriesItem = props => (
 				</div>
 			</Card>
 		</CardGrid>
-	</Panel>
+	</>
 );
 
 SeriesItem.propTypes = {

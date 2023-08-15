@@ -1,57 +1,67 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { Header, Group, Link, Image } from '@vkontakte/vkui';
+import { Header, Group, Link, Image, CardGrid } from '@vkontakte/vkui';
+
 import './custom.css';
 
-const handleLinkClick = () => {
-    go({id: "seriesItem"}); 
-}
-
-function Content(tab, go) {
-    
-    if (tab.tab == "comics") {
-        return <Group>
-            <Header slideWidth="30%">Комиксы</Header>
-            <div className="card series">
-                <Image
-                    size={200}
-                    src="../img/check.png"
-                >
-                </Image>
-                <Link onClick={handleLinkClick} data-to="comicsItem">
-                    Название книги
-                </Link>
-                <span>
-                    Название серии
-                </span>
-            </div>
+function Content(props) {
+    console.log(props)
+    if (props.props.tab == "comics") {
+        return <>
+        <Header mode="primary">
+            Комиксы
+        </Header>
+        <Group>
+            <CardGrid size="s">
+                <div className="card series">
+                    <Image
+                        size={200}
+                        src="../img/check.png"
+                    >
+                    </Image>
+                    <Link onClick={() => props.props.go({id: "comicsItem", from: "comics" })} data-to="comicsItem">
+                        Название книги
+                    </Link>
+                    <span>
+                        Название серии
+                    </span>
+                </div>
+            </CardGrid> 
         </Group>
+        </>
     }
-    if (tab.tab == "series") {
-        return <Group>
-            <Header slideWidth="30%">Серии</Header>
-            <div className="card series">
-                <Image
-                    size={200}
-                    src="../img/check.png"
-                >
-                </Image>
-                <Link onClick={handleLinkClick} data-to="seriesItem">
-                    Название серии
-                </Link>
-                <span>
-                    5 книг
-                </span>
-            </div>
-        </Group>
+    if (props.props.tab == "series") {
+        return <>
+            <Header mode="primary">
+				Серии
+			</Header>
+            <Group>    
+                <CardGrid>
+                    <div className="card series">
+                        <Image
+                            size={200}
+                            src="../img/check.png"
+                        >
+                        </Image>
+                        <Link onClick={() => props.props.go({id: "seriesItem", from: "series" })} data-to="seriesItem">
+                            Название серии
+                        </Link>
+                        <span>
+                            5 книг
+                        </span>
+                    </div>
+                </CardGrid>
+            </Group>
+        </>
+        
     }
 
 }
 
 const Catalog = (props) => (
 
-    <Content tab={props.tab} go={props.go} />
+    <Content props={props} />
 
 );
 
