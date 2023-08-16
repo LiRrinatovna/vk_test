@@ -1,19 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {Header, Group, CardScroll, Link, Image} from '@vkontakte/vkui';
+import { useNavigate } from 'react-router-dom';
 
 import './custom.css';
 
 
 function Content(props){
 	console.log(props)
+	const navigate = useNavigate();
 	if(props.props.route == '/'){
 		return(	
 			<>	
 				<Header
 					mode="primary"
 					aside={
-					<Link onClick={() => history.push('/comics')}>
+					<Link onClick={() => navigate('/comics')}>
 						Показать все HOME
 					</Link>
 					}
@@ -28,7 +30,7 @@ function Content(props){
 								src="./img/check.png"
 							>
 							</Image>
-							<Link onClick={() => history.push('/comics-item')}>
+							<Link onClick={() => navigate('/comics/:id')}>
 								Название книги
 							</Link>
 						</div>
@@ -38,7 +40,7 @@ function Content(props){
 				<Header
 					mode="primary"
 					aside={
-					<Link onClick={() => history.push('/series')}>
+					<Link  onClick={() => navigate('/catalog')}>
 						Показать все
 					</Link>
 					}
@@ -53,7 +55,7 @@ function Content(props){
 							src="./img/check.png"
 						>
 						</Image>
-						<Link onClick={() => history.push('/series-item')}>
+						<Link onClick={() => navigate('/series/:id')}>
 							Название серии
 						</Link>
 						<span>
@@ -71,7 +73,7 @@ function Content(props){
 				<Header
 					mode="primary"
 					aside={
-					<Link onClick={() => history.push('/comics')}>
+					<Link onClick={() => navigate('/comics')}>
 						Показать все FAV
 					</Link>
 					}
@@ -86,7 +88,7 @@ function Content(props){
 								src="./img/check.png"
 							>
 							</Image>
-							<Link onClick={() => history.push('/comics-item')}>
+							<Link onClick={() => navigate('/comics/:id')}>
 								Название книги
 							</Link>
 						</div>
@@ -96,7 +98,7 @@ function Content(props){
 				<Header
 					mode="primary"
 					aside={
-					<Link onClick={() => history.push('/series')}>
+					<Link onClick={() => navigate('/series')}>
 						Показать все
 					</Link>
 					}
@@ -111,7 +113,7 @@ function Content(props){
 							src="./img/check.png"
 						>
 						</Image>
-						<Link onClick={() => history.push('/series-item')}>
+						<Link onClick={() => navigate('/series/:id')}>
 							Название серии
 						</Link>
 						<span>
@@ -132,7 +134,6 @@ const Home = (props) => (
 
 Home.propTypes = {
     route: PropTypes.string.isRequired,
-    history: PropTypes.func.isRequired,
 };
 
 export default Home;

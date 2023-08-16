@@ -62,7 +62,6 @@ const App = ({history}) => {
       
         <SplitCol width="100%" maxWidth="560px" stretchedOnMobile autoSpaced>
           <Epic
-          
           tabbar={
             (
                 <Tabbar>
@@ -132,15 +131,15 @@ const App = ({history}) => {
                 />
 
                 <Route
-                  path={activePath}
-                  component={ComicsItem}
+                  path="/comic/:id"
+                  route={activePath}
                 />
 
                 <Route
-                  path={activePath}
-                  component={SeriesItem}
+                  path="/series/:id"
+                  route={activePath}
                 />
-              </Routes>
+                </Routes>
           </Epic>
         </SplitCol>
       </SplitLayout>  

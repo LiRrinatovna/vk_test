@@ -11,7 +11,7 @@ function handleBack() {
 const SeriesItem = props => (
 	<>
 		<PanelHeader
-			before={<PanelHeaderBack onClick={() => props.go({id: "fav"})}/>}
+			before={<PanelHeaderBack onClick={() => handleBack()}/>}
 		>
 			Название серии
 		</PanelHeader >
@@ -35,7 +35,7 @@ const SeriesItem = props => (
 						src="../img/check.png"
 					>
 					</Image>
-					<Link onClick={() => go({id: "comicsItem"})} data-to="comicsItem">
+					<Link onClick={() => navigate('/comics/:id')}>
 						Название книги
 					</Link>
 				</div>

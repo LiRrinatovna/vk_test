@@ -4,14 +4,15 @@ import PropTypes from 'prop-types';
 import { Panel, PanelHeader, PanelHeaderBack, Gallery, Group, Header,Title, Avatar, Link, Image, HorizontalCell} from '@vkontakte/vkui';
 
 import './custom.css';
+import { useNavigate } from 'react-router-dom';
 
 function handleBack() {
-	history.goBack()
+	navigate(-1);
 }
 
-const ComicsItem = props => (
+const ComicsItem = (props) => (
 	<>	<PanelHeader
-				before={<PanelHeaderBack onClick={() => goBack()}/>}
+				before={<PanelHeaderBack onClick={() => handleBack()}/>}
 			>
 		</PanelHeader >
 		<img src="https://placebear.com/320/320" style={{ display: 'block' }} />
@@ -46,7 +47,7 @@ const ComicsItem = props => (
 				src="../img/check.png"
 			>
 			</Image>
-			<Link onClick={() => props.go({id: "SeriesItem"})}>
+			<Link onClick={() => history.push('/series/:id')}>
 				Название серии
 			</Link>
 			<span>
@@ -56,9 +57,5 @@ const ComicsItem = props => (
 	</>
 );
 
-ComicsItem.propTypes = {
-	id: PropTypes.string.isRequired,
-	go: PropTypes.func.isRequired
-}
 
 export default ComicsItem;
