@@ -16,6 +16,7 @@ import Catalog from './panels/Catalog';
 
 const App = ({history}) => {
   const navigate = useNavigate();
+  
 
 	useEffect(() => {
 		bridge.subscribe(({detail: {type, data}}) =>{
@@ -34,10 +35,10 @@ const App = ({history}) => {
 	}, []);
 
   const [activePath, setActivePath] = useState('/')
-  const [activeTab, setActiveTab] = useState('home');
+  const [activeTab, setActiveTab] = useState('HOME');
 
   const onTabClick = (tab) => {
-    console.log(tab)
+    // console.log(tab)
     
     setActivePath(routes[tab]);
     setActiveTab(tab);
@@ -48,8 +49,8 @@ const App = ({history}) => {
     FAV: '/fav',
     COMICS: '/comics',
     SERIES: '/series',
-    COMIC: '/comic/:id',
-    SERIES_DETAIL: '/series/:id'
+    COMICS_ITEM: '/comic/:id',
+    SERIES_ITEM: '/series/:id'
   }
 
 	return ( 
@@ -76,8 +77,8 @@ const App = ({history}) => {
                 </TabbarItem>
                 <TabbarItem
                     history={history}
-                    onClick={() => onTabClick('comics')}
-                    selected={activeTab === 'comics'}
+                    onClick={() => onTabClick('COMICS')}
+                    selected={activeTab === 'COMICS'}
                     data-story="comics"
                     text="Комиксы"
                 >
@@ -85,8 +86,8 @@ const App = ({history}) => {
                 </TabbarItem>
                 <TabbarItem
                     history={history}
-                    onClick={() => onTabClick('series')}
-                    selected={activeTab === 'series'}
+                    onClick={() => onTabClick('SERIES')}
+                    selected={activeTab === 'SERIES'}
                     data-story="series"
                     text="Серии"
                 >
@@ -112,22 +113,22 @@ const App = ({history}) => {
               <Routes>
                 <Route
                   path="/"
-                  element={<Home history={Home} />} 
+                  element={<Home history={history} route={activePath}/>} 
                 />
           
                 <Route
                   path="/comics"
-                  component={Catalog}
+                  element={<Catalog history={history} route={activePath}/>} 
                 />
 
                 <Route
                   path="/series"
-                  component={Catalog} 
+                  element={<Catalog history={history} route={activePath}/>}  
                 />
 
                 <Route
                   path="/fav"
-                  element={<Home history={fav} />} 
+                  element={<Home history={history} route={activePath}/>} 
                 />
 
                 <Route

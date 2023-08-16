@@ -5,8 +5,8 @@ import { Panel, PanelHeader, PanelHeaderBack, Gallery, Group, Header,Title, Avat
 
 import './custom.css';
 
-const goBack = () => {
-  props.history.goBack();
+function handleBack() {
+	history.goBack()
 }
 
 const ComicsItem = props => (

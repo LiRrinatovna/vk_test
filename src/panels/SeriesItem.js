@@ -4,6 +4,10 @@ import { Panel, PanelHeader, PanelHeaderBack, Group, CardGrid, Card, Image, Link
 
 import './custom.css';
 
+function handleBack() {
+	history.goBack()
+}
+
 const SeriesItem = props => (
 	<>
 		<PanelHeader
