@@ -15,12 +15,7 @@ import { hot } from 'react-hot-loader';
 
 
 
-<<<<<<< HEAD
 const App = ({history}) => {  
-=======
-const App = ({history}) => {
-
->>>>>>> 5857c041988d6bd59e9bfb6ceff2c53ffe580d66
 
 	useEffect(() => {
 		bridge.subscribe(({detail: {type, data}}) =>{
@@ -54,13 +49,8 @@ const App = ({history}) => {
     FAV: '/fav',
     COMICS: '/comics',
     SERIES: '/series',
-<<<<<<< HEAD
     COMICS_ITEM: '/comic/:id',
     SERIES_ITEM: '/series/:id'
-=======
-    COMICS_ITEM: '/comics-item',
-    SERIES_ITEM: '/series-item'  
->>>>>>> 5857c041988d6bd59e9bfb6ceff2c53ffe580d66
   }
 
 	return ( 
