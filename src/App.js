@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import {BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
+
 import bridge from '@vkontakte/vk-bridge';
 import {SplitLayout, SplitCol, Epic, Tabbar, TabbarItem, Counter, Search} from '@vkontakte/vkui';
 import {Icon28SearchOutline, Icon28BookSpreadOutline, Icon28ListBulletSquareOutline, Icon28UserStarBadgeOutline, Icon24Filter} from '@vkontakte/icons';
@@ -11,10 +11,16 @@ import Home from './panels/Home';
 import ComicsItem from './panels/ComicsItem';
 import SeriesItem from './panels/SeriesItem';
 import Catalog from './panels/Catalog';
+import { hot } from 'react-hot-loader';
 
 
 
+<<<<<<< HEAD
 const App = ({history}) => {  
+=======
+const App = ({history}) => {
+
+>>>>>>> 5857c041988d6bd59e9bfb6ceff2c53ffe580d66
 
 	useEffect(() => {
 		bridge.subscribe(({detail: {type, data}}) =>{
@@ -42,13 +48,19 @@ const App = ({history}) => {
     setActiveTab(tab);
   
   }
+
   const routes = {
     HOME: '/',
     FAV: '/fav',
     COMICS: '/comics',
     SERIES: '/series',
+<<<<<<< HEAD
     COMICS_ITEM: '/comic/:id',
     SERIES_ITEM: '/series/:id'
+=======
+    COMICS_ITEM: '/comics-item',
+    SERIES_ITEM: '/series-item'  
+>>>>>>> 5857c041988d6bd59e9bfb6ceff2c53ffe580d66
   }
 
 	return ( 
