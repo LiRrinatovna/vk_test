@@ -1,20 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {Header, Group, CardScroll, Link, Image} from '@vkontakte/vkui';
-import { useNavigate } from 'react-router-dom';
+
 import './custom.css';
 
 
-function Content(props){
-	const navigate = useNavigate();
+function Content(props, history){
 	console.log(props)
-	if(props.props.route == '/comics'){
+	if(props.props.route == '/'){
 		return(	
 			<>	
 				<Header
 					mode="primary"
 					aside={
-					<Link onClick={() => navigate('/comics')}>
+					<Link onClick={() => history.push('/comics')}>
 						Показать все HOME
 					</Link>
 					}
@@ -29,7 +28,7 @@ function Content(props){
 								src="./img/check.png"
 							>
 							</Image>
-							<Link onClick={() => navigate('/comics')}>
+							<Link onClick={() => history.push('/comics/:id')}>
 								Название книги
 							</Link>
 						</div>
@@ -38,7 +37,7 @@ function Content(props){
 			</>
 		)
 	}
-	if(props.props.route == '/series'){
+	if(props.props.route == '/fav'){
 		return(	
 			<>	
 				<Header
@@ -74,7 +73,7 @@ function Content(props){
 }
 
 const Catalog = (props) => (
-	<Content navigate={navigate} props={props}/>
+	<Content history={history} props={props}/>
 );
 
 

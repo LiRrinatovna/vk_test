@@ -9,6 +9,7 @@ import './custom.css';
 function Content(props){
 	console.log(props)
 	const navigate = useNavigate();
+
 	if(props.props.route == '/'){
 		return(	
 			<>	
@@ -40,7 +41,7 @@ function Content(props){
 				<Header
 					mode="primary"
 					aside={
-					<Link  onClick={() => navigate('/catalog')}>
+					<Link  onClick={() => navigate('/series')}>
 						Показать все
 					</Link>
 					}
@@ -62,10 +63,10 @@ function Content(props){
 							5 книг
 						</span>
 					</div>
-					</CardScroll>	
+					</CardScroll>
 				</Group>
 			</>
-		)
+			)
 	}
 	if(props.props.route == '/fav'){
 		return(	
@@ -131,9 +132,8 @@ const Home = (props) => (
 	<Content props={props}/>
 );
 
-
 Home.propTypes = {
-    route: PropTypes.string.isRequired,
+	route: PropTypes.string.isRequired,
 };
 
 export default Home;

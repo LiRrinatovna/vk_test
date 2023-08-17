@@ -5,7 +5,7 @@ import { Panel, PanelHeader, PanelHeaderBack, Gallery, Group, Header,Title, Avat
 
 import './custom.css';
 
-const ComicsItem = (props) => (
+const ComicsItem = () => (
 	<>	<PanelHeader
 				before={<PanelHeaderBack onClick={() => handleBack()}/>}
 			>

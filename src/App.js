@@ -44,13 +44,13 @@ const App = ({history}) => {
   
   }
 
-  const routes = {
+   const routes = {
     HOME: '/',
     FAV: '/fav',
     COMICS: '/comics',
     SERIES: '/series',
-    COMICS_ITEM: '/comic/:id',
-    SERIES_ITEM: '/series/:id'
+    COMICS_ITEM: '/comicItem',
+    SERIES_ITEM: '/seriesItem'
   }
 
 	return ( 
@@ -111,32 +111,32 @@ const App = ({history}) => {
             }>
               <Routes>
                 <Route
-                  path="/"
+                  path={routes.HOME}
                   element={<Home history={history} route={activePath}/>} 
                 />
           
                 <Route
-                  path="/comics"
+                  path={routes.COMICS}
                   element={<Catalog history={history} route={activePath}/>} 
                 />
 
                 <Route
-                  path="/series"
+                  path={routes.SERIES}
                   element={<Catalog history={history} route={activePath}/>}  
                 />
 
                 <Route
-                  path="/fav"
+                  path={routes.FAV}
                   element={<Home history={history} route={activePath}/>} 
                 />
 
                 <Route
-                  path="/comic/:id"
+                  path={routes.COMICS_ITEM}
                   route={activePath}
                 />
 
                 <Route
-                  path="/series/:id"
+                  path={routes.SERIES_ITEM}
                   route={activePath}
                 />
                 </Routes>
