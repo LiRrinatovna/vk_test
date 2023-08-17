@@ -14,9 +14,7 @@ import Catalog from './panels/Catalog';
 
 
 
-const App = ({history}) => {
-  const navigate = useNavigate();
-  
+const App = ({history}) => {  
 
 	useEffect(() => {
 		bridge.subscribe(({detail: {type, data}}) =>{

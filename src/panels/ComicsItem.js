@@ -4,11 +4,6 @@ import PropTypes from 'prop-types';
 import { Panel, PanelHeader, PanelHeaderBack, Gallery, Group, Header,Title, Avatar, Link, Image, HorizontalCell} from '@vkontakte/vkui';
 
 import './custom.css';
-import { useNavigate } from 'react-router-dom';
-
-function handleBack() {
-	navigate(-1);
-}
 
 const ComicsItem = (props) => (
 	<>	<PanelHeader
