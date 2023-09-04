@@ -1,17 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Panel, PanelHeader, PanelHeaderBack, Group, CardGrid, Card, Image, Link} from '@vkontakte/vkui';
-
 import './custom.css';
 
-function handleBack() {
-	history.goBack()
-}
-
 const SeriesItem = props => (
-	<>
+	<Panel id={props.id}>
 		<PanelHeader
-			before={<PanelHeaderBack onClick={() => handleBack()}/>}
+			before={<PanelHeaderBack onClick={() => props.go({id: "fav"})}/>}
 		>
 			Название серии
 		</PanelHeader >
@@ -35,13 +30,13 @@ const SeriesItem = props => (
 						src="../img/check.png"
 					>
 					</Image>
-					<Link onClick={() => navigate('/comics/:id')}>
+					<Link onClick={() => go({id: "comicsItem"})} data-to="comicsItem">
 						Название книги
 					</Link>
 				</div>
 			</Card>
 		</CardGrid>
-	</>
+	</Panel>
 );
 
 SeriesItem.propTypes = {
